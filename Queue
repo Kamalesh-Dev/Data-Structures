@@ -1,0 +1,85 @@
+//$Id$
+package kam.interviewprep;
+
+class Queue{
+	Object arr[];
+	int head;
+	int tail;
+	int size;
+	public Queue(int size)
+	{
+		this.size=size;
+		this.arr=new Object[size];
+		this.head=-1;
+		this.tail=-1;
+	}
+	public void enqueue(Object data)
+	{
+		if(this.tail==this.size-1)
+		{
+			if(this.arr[0]==null)
+			{
+				this.tail=-1;
+			}
+			else
+			{
+				System.out.println("unable to perform");
+				return;
+			}
+		}
+		if(this.arr[this.tail+1]==null)
+		{
+			this.arr[++this.tail]=data;
+		}
+		else
+		{
+			System.out.println("Queue full while entering:"+data);
+		}
+				
+	}
+	public Object dequeue()
+	{						
+		if(this.head==this.size-1)
+		{
+			if(this.arr[0]!=null)
+			{
+				this.head=-1;
+			}
+			else
+			{
+				System.out.println("unable to perform No elements");
+				return null;
+			}
+		}
+		Object toReturn=this.arr[++this.head];
+		this.arr[this.head]=null;
+		return toReturn;
+	}
+	public void disp()
+	{
+		System.out.println("head:"+this.head);
+		System.out.println("tail:"+this.tail);
+		
+	}
+}
+
+public class CircularQueue {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Queue q=new Queue(4);
+		
+		q.enqueue('a');
+		q.enqueue('b');
+		q.enqueue('c');
+		q.enqueue('d');
+		System.out.println(q.dequeue());		
+		System.out.println(q.dequeue());
+		System.out.println(q.dequeue());
+		System.out.println(q.dequeue());
+		q.enqueue('e');
+		System.out.println(q.dequeue());
+		
+	}
+
+}
